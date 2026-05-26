@@ -1,5 +1,3 @@
-# Todo List — React + TypeScript + Redux Toolkit + Redux Saga + MockAPI
-
 ## Стек
 
 - React
