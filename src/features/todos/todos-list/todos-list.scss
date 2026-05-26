@@ -1,0 +1,48 @@
+.todos-list {
+  margin-top: 8px;
+}
+
+.todos-list__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.todos-list__title {
+  margin: 0;
+  font-size: 20px;
+  color: #0f172a;
+}
+
+.todos-list__loading {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.todos-list__error {
+  margin: 0 0 12px;
+  padding: 10px 12px;
+  border-radius: 5px;
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.todos-list__status {
+  margin: 0;
+  padding: 18px;
+  border: 1px dashed #cbd5e1;
+  border-radius: 5px;
+  color: #64748b;
+  text-align: center;
+}
+
+.todos-list__items {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}

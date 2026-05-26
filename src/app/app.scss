@@ -1,0 +1,41 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 48px 16px;
+}
+
+.app__card {
+  width: 100%;
+  max-width: 760px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
+}
+
+.app__header {
+  margin-bottom: 24px;
+}
+
+.app__subtitle {
+  margin: 0 0 8px;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.app__title {
+  margin: 0;
+  color: #0f172a;
+  font-size: 36px;
+  line-height: 1.1;
+}
+
+.app__description {
+  margin: 12px 0 0;
+  color: #475569;
+  font-size: 16px;
+  line-height: 1.5;
+}
