@@ -46,3 +46,37 @@
   padding: 0;
   list-style: none;
 }
+
+.todos-list__panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.todos-list__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.todos-list__filter-button,
+.todos-list__active-filter-button {
+  padding: 9px 12px;
+  border: 0;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.todos-list__filter-button {
+  color: #475467;
+  background: #ffffff;
+}
+
+.todos-list__active-filter-button {
+  color: #ffffff;
+  background: #2563eb;
+}

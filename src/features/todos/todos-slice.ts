@@ -1,11 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import type { Todo, TodoId, TodosState } from './todos-types';
+import type { Todo, TodoFilters, TodoId, TodosState } from './todos-types';
 
 const initialState: TodosState = {
   items: [],
   loading: false,
   error: null,
+  filter: 'all',
 };
 
 const todosSlice = createSlice({
@@ -82,6 +83,9 @@ const todosSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
+    setFilter(state, action: PayloadAction<TodoFilters>) {
+      state.filter = action.payload;
+    },
   },
 });
 
@@ -101,6 +105,7 @@ export const {
   deleteTodoRequested,
   deleteTodoSucceeded,
   deleteTodoFailed,
+  setFilter,
 } = todosSlice.actions;
 
 export const todosReducer = todosSlice.reducer;

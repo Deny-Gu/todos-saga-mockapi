@@ -1,16 +1,24 @@
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '@/app/store';
-import type { Todo } from '../todos-types';
-import { selectTodos, selectTodosError, selectTodosLoading } from '../todos-selectors';
-import { loadTodosRequested } from '../todos-slice';
+import { TodoFilters, type Todo, type TodoFilter } from '../todos-types';
+import { selectTodoFilter, selectTodos, selectTodosError, selectTodosLoading, selectTodosStats, selectVisibleTodos } from '../todos-selectors';
+import { loadTodosRequested, setFilter } from '../todos-slice';
 import TodosItem from '../todos-item';
 import './todos-list.scss';
 
+const filters: TodoFilter[] = [
+  { value: TodoFilters.All, label: 'Все' },
+  { value: TodoFilters.Active, label: 'Активные' },
+  { value: TodoFilters.Completed, label: 'Выполненные' },
+];
+
 const TodosList = () => {
   const dispatch = useAppDispatch();
-  const todos = useAppSelector(selectTodos);
+  const todos = useAppSelector(selectVisibleTodos);
   const loading = useAppSelector(selectTodosLoading);
   const error = useAppSelector(selectTodosError);
+  const activeFilter = useAppSelector(selectTodoFilter);
+  const stats = useAppSelector(selectTodosStats);
 
   useEffect(() => {
     dispatch(loadTodosRequested());
@@ -22,13 +30,27 @@ const TodosList = () => {
 
   return (
     <section className="todos-list">
+      <div className="todos-list__panel">
+        <div className="todos-list__filters" aria-label="Фильтр задач">
+          {filters.map((filter) => (
+            <button
+              key={filter.value}
+              className={
+                activeFilter === filter.value ? "todos-list__active-filter-button" : "todos-list__filter-button"
+              }
+              type="button"
+              onClick={() => dispatch(setFilter(filter.value))}
+            >
+              {`${filter.label}: ${stats[filter.value]}`}
+            </button>
+          ))}
+        </div>
+      </div>
       <div className="todos-list__top">
         <h2 className="todos-list__title">Задачи</h2>
         {loading && <span className="todos-list__loading">обновление...</span>}
       </div>
-
       {error && <p className="todos-list__error">Ошибка: {error}</p>}
-
       {todos.length === 0 ? (
         <p className="todos-list__status">Пока задач нет</p>
       ) : (
